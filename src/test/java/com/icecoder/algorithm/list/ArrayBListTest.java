@@ -14,7 +14,6 @@ public class ArrayBListTest {
 
     @Test
     public void add() {
-        new ArrayList<>()
         ArrayBList<Integer> integers = new ArrayBList<>(1);
         integers.add(Integer.valueOf(1));
         Assertions.assertEquals(Integer.valueOf(1), integers.get(0));
