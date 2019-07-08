@@ -114,6 +114,8 @@ public class GraphImplTest {
         System.out.println("----------------Kruskal vec 2");
         GraphImplForLinkedTable<City> cityGraphImplForLinkedTable = cityGraph.genKruskalMiniTree();
         cityGraphImplForLinkedTable.dfsTraverse();
+        System.out.println(cityGraph.genVecShortestPath());
+
 
     }
 
