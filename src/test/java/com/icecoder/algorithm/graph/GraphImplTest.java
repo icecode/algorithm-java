@@ -102,7 +102,7 @@ public class GraphImplTest {
         cityGraph.insertArc(nc, wh, 2);
         cityGraph.insertArc(nc, cs, 2);
 
-        cityGraph.insertArc(cs, nc, 3);
+        cityGraph.insertArc(cs, nc, 2);
         cityGraph.insertArc(cs, wh, 3);
 
 
@@ -111,10 +111,11 @@ public class GraphImplTest {
 //        cityGraph.genPrimMiniTree(1).dfsTraverse();
 //        System.out.println("----------------vec 2");
 //        cityGraph.genPrimMiniTree(2).dfsTraverse();
-        System.out.println("----------------Kruskal vec 2");
-        GraphImplForLinkedTable<City> cityGraphImplForLinkedTable = cityGraph.genKruskalMiniTree();
-        cityGraphImplForLinkedTable.dfsTraverse();
-        System.out.println(cityGraph.genVecShortestPath());
+//        System.out.println("----------------Kruskal vec 2");
+//        GraphImplForLinkedTable<City> cityGraphImplForLinkedTable = cityGraph.genKruskalMiniTree();
+//        cityGraphImplForLinkedTable.dfsTraverse();
+        //System.out.println(cityGraph.genFloydShortestPath());
+        cityGraph.genFloydShortestPath();
 
 
     }

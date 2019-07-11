@@ -257,10 +257,10 @@ public class GraphImplForLinkedTable<T> {
     }
 
 
-    private void genFloydShortestPath() {
+    public void genFloydShortestPath() {
         Object[] vecVector = vertexSet.toArray();
-        int[][] distanceMatrix = new int[vertexSet.size()][vertexSet.size()];
-        int[][] squeMatrix = new int[vertexSet.size()][vertexSet.size()];
+        long[][] distanceMatrix = new long[vertexSet.size()][vertexSet.size()];
+        long[][] pathMatrix = new long[vertexSet.size()][vertexSet.size()];
 
         //初始化权值矩阵
         int initIndex = 0;
@@ -276,9 +276,34 @@ public class GraphImplForLinkedTable<T> {
                     }
                 }
             }
+            initIndex++;
         }
-        //初始化位置矩阵
-
+        for (int i = 0; i < vecVector.length; i++) {
+            System.out.print(String.format("%4d", i));
+            for (int j = 0; j < vecVector.length; j++) {
+                System.out.print(String.format("%4d:(%d,%d)", j, distanceMatrix[i][j], pathMatrix[i][j]));
+            }
+            System.out.println();
+        }
+        System.out.println("--------------");
+        //开始计算
+        for (int k = 0; k < vecVector.length; k++) {
+            for (int i = 0; i < vecVector.length; i++) {
+                for (int j = 0; j < vecVector.length; j++) {
+                    if ((distanceMatrix[i][k] + distanceMatrix[k][j]) < distanceMatrix[i][j]) {
+                        distanceMatrix[i][j] = (distanceMatrix[i][k] + distanceMatrix[k][j]);
+                        pathMatrix[i][j] = k;
+                    }
+                }
+            }
+        }
+        for (int i = 0; i < vecVector.length; i++) {
+            System.out.print(String.format("%4s", ((Vec<T>)vecVector[i]).data));
+            for (int j = 0; j < vecVector.length; j++) {
+                System.out.print(String.format("%4d:(%d,%d)", j, distanceMatrix[i][j], pathMatrix[i][j]));
+            }
+            System.out.println();
+        }
 
     }
 
