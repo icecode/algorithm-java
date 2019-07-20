@@ -150,4 +150,29 @@ public class ArrayVectorTest {
         integerVector.bubbleSort();
         Assertions.assertTrue(integerVector.sorted());
     }
+
+    @Test
+    public void mergeSort() {
+        ArrayVector<Integer> integerVector = new ArrayVector<>();
+        integerVector.insert(0);
+        integerVector.insert(1);
+        integerVector.insert(2);
+        integerVector.insert(3);
+        integerVector.insert(4);
+        integerVector.insert(5);
+        Assertions.assertEquals(5, integerVector.find(0));
+        Assertions.assertEquals(4, integerVector.find(1));
+        Assertions.assertEquals(3, integerVector.find(2));
+        Assertions.assertEquals(2, integerVector.find(3));
+        Assertions.assertEquals(1, integerVector.find(4));
+        Assertions.assertEquals(0, integerVector.find(5));
+        integerVector.mergeSort();
+        System.out.println(integerVector.toString());
+        Assertions.assertEquals(0, integerVector.find(0));
+        Assertions.assertEquals(1, integerVector.find(1));
+        Assertions.assertEquals(2, integerVector.find(2));
+        Assertions.assertEquals(3, integerVector.find(3));
+        Assertions.assertEquals(4, integerVector.find(4));
+        Assertions.assertEquals(5, integerVector.find(5));
+    }
 }

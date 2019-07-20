@@ -70,6 +70,11 @@ public interface Vector<T> {
     void bubbleSort();
 
     /**
+     * 归并排序
+     */
+    void mergeSort();
+
+    /**
      * 是否是排序状态
      * @return
      */

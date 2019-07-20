@@ -1,6 +1,7 @@
 package com.icecoder.algorithm.adt;
 
 import javax.annotation.Nonnull;
+import java.util.Arrays;
 
 /**
  * @author libing
@@ -159,6 +160,48 @@ public class ArrayVector<T extends Comparable<T>> implements Vector<T> {
                 }
             }
         }
+    }
+
+    @Override
+    public void mergeSort() {
+        mergeSort(0, size - 1);
+    }
+
+    public void mergeSort(int lo, int hi) {
+        if (hi == lo) {
+            return;
+        }
+        if ((hi - lo) == 1) {
+            if (((T) elmContainer[hi]).compareTo((T) elmContainer[lo]) < 0) {
+                Object tmp = elmContainer[hi];
+                elmContainer[hi] = elmContainer[lo];
+                elmContainer[lo] = tmp;
+            }
+            return;
+        }
+        int mi = (lo + hi + 1) / 2;
+        mergeSort(lo, mi);
+        mergeSort(mi + 1, hi);
+        Object[] tmpVec = new Object[hi - lo + 1];
+        for (int left = lo, right = mi + 1, elIndex = 0; left <= mi || right <= hi;) {
+            if (left > mi) {
+                //左边元素耗尽
+                tmpVec[elIndex++] = elmContainer[right++];
+            }
+            if (right > hi) {
+                //如果右边元素耗尽
+                tmpVec[elIndex++] = elmContainer[left++];
+            }
+            if (left <= mi && right <= hi) {
+                if (((T) elmContainer[left]).compareTo((T) elmContainer[right]) < 0) {
+                    tmpVec[elIndex++] = elmContainer[left++];
+                } else {
+                    tmpVec[elIndex++] = elmContainer[right++];
+                }
+            }
+        }
+        System.arraycopy(tmpVec, 0, elmContainer, lo, hi - lo + 1);
+
     }
 
     @Override
