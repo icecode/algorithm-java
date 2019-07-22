@@ -75,6 +75,11 @@ public interface Vector<T> {
     void mergeSort();
 
     /**
+     * 选择排序
+     */
+    void selectionSort();
+
+    /**
      * 是否是排序状态
      * @return
      */
@@ -85,5 +90,7 @@ public interface Vector<T> {
      * @return
      */
     int size();
+
+
 
 }

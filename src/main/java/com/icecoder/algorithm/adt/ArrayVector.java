@@ -205,6 +205,23 @@ public class ArrayVector<T extends Comparable<T>> implements Vector<T> {
     }
 
     @Override
+    public void selectionSort() {
+        Object tmp = null;
+        int maxIndex = 0;
+        for (int i = 0; i < size; i++) {
+            maxIndex = 0;
+            for (int j = 1; j < size - i; j++) {
+                if (((T) elmContainer[j]).compareTo((T) elmContainer[j - 1]) > 0) {
+                    maxIndex = j;
+                }
+            }
+            tmp = elmContainer[size - i - 1];
+            elmContainer[size - i - 1] = elmContainer[maxIndex];
+            elmContainer[maxIndex] = tmp;
+        }
+    }
+
+    @Override
     public boolean sorted() {
         for (int i = 1; i < size; i++) {
             if (((T) elmContainer[i]).compareTo((T) elmContainer[i - 1]) < 0) {
