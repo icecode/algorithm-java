@@ -11,7 +11,7 @@ public interface Tree<T extends Comparable<T>> {
 
         /**
          *
-         * 返回顶点数据
+         * 返回节点数据
          *
          * @return
          */

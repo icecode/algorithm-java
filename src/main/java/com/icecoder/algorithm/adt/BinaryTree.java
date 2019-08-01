@@ -1,4 +1,4 @@
-package com.icecoder.algorithm.ads.stack;
+package com.icecoder.algorithm.adt;
 
 import com.icecoder.algorithm.adt.Tree;
 
@@ -91,9 +91,9 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
 
     @Override
     public Tree.Node<T> insert(T data) {
-        size++;
         if (root == null) {
             root = new Node<>(data);
+            size++;
             return root;
         }
         /*
@@ -108,6 +108,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
             //右树
             if (parentNode.right == null) {
                 parentNode.right = newNode;
+                size++;
                 return newNode;
             } else {
                 return insertNode(parentNode.right, newNode);
@@ -116,6 +117,7 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
             //左树
             if (parentNode.left == null) {
                 parentNode.left = newNode;
+                size++;
                 return newNode;
             } else {
                 return insertNode(parentNode.left, newNode);
