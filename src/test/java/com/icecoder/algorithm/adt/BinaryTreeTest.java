@@ -3,6 +3,8 @@ package com.icecoder.algorithm.adt;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 /**
  * @author libing
  * @version 1.0
@@ -40,5 +42,26 @@ public class BinaryTreeTest {
         Assertions.assertTrue(b.empty());
         b.insert(1);
         Assertions.assertFalse(b.empty());
+    }
+
+    @Test
+    public void preTraverseRecursive() {
+        BinaryTree<Integer> b = new BinaryTree<Integer>();
+        b.insert(1);
+        b.insert(2);
+        b.insert(3);
+        b.insert(4);
+        b.insert(5);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5), b.preTraverseRecursive());
+
+        BinaryTree<Integer> b2 = new BinaryTree<Integer>();
+        b2.insert(5);
+        b2.insert(3);
+        b2.insert(4);
+        b2.insert(2);
+        b2.insert(1);
+        b2.insert(7);
+        b2.insert(6);
+        Assertions.assertEquals(Arrays.asList(5, 3, 2, 1, 4, 7, 6), b2.preTraverseRecursive());
     }
 }

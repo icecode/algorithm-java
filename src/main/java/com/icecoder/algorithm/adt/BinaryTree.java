@@ -2,6 +2,7 @@ package com.icecoder.algorithm.adt;
 
 import com.icecoder.algorithm.adt.Tree;
 
+import java.util.LinkedList;
 import java.util.Objects;
 
 /**
@@ -123,6 +124,22 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
                 return insertNode(parentNode.left, newNode);
             }
         }
+    }
+
+    @Override
+    public java.util.List<T> preTraverseRecursive() {
+        LinkedList<T> res = new LinkedList<>();
+        preTraverseRecursive(root, res);
+        return res;
+    }
+
+    public void preTraverseRecursive(Node<T> node, java.util.LinkedList<T> elms) {
+        if (node == null) {
+            return;
+        }
+        elms.addLast(node.data);
+        preTraverseRecursive(node.left, elms);
+        preTraverseRecursive(node.right, elms);
     }
 
     @Override

@@ -66,6 +66,13 @@ public interface Tree<T extends Comparable<T>> {
 
 
     /**
+     * 先序遍历
+     * @return
+     */
+    java.util.List<T> preTraverseRecursive();
+
+
+    /**
      * 是否为一个空树
      * @return
      */
