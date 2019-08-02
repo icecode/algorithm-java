@@ -162,6 +162,35 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     @Override
+    public List<T> preTraverse2() {
+        LinkedList<T> res = new LinkedList<>();
+        Stack<Node<T>> waitVisitNodes = new ArrayStack<>();
+        waitVisitNodes.push(root);
+        while (!waitVisitNodes.empty()) {
+            Node<T> n = waitVisitNodes.pop();
+            res.addLast(n.data());
+            if (n.right != null) {
+                waitVisitNodes.push(n.right);
+            }
+            traverseLeftTree(n.left, res, waitVisitNodes);
+        }
+        return res;
+    }
+
+    /**
+     * 遍历左子树
+     */
+    private void traverseLeftTree(Node<T> leftNode, LinkedList<T> visitNodes, Stack<Node<T>> waitVisitRight) {
+        while (leftNode != null) {
+            visitNodes.addLast(leftNode.data());
+            if (leftNode.right() != null) {
+                waitVisitRight.push(leftNode.right);
+            }
+            leftNode = leftNode.left;
+        }
+    }
+
+    @Override
     public Node<T> root() {
         return root;
     }

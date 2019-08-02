@@ -66,17 +66,24 @@ public interface Tree<T extends Comparable<T>> {
 
 
     /**
-     * 先序遍历
+     * 先序遍历 递归实现
      * @return
      */
     java.util.List<T> preTraverseRecursive();
 
 
     /**
-     * 先序遍历
+     * 先序遍历 迭代实现
      * @return
      */
     java.util.List<T> preTraverse();
+
+
+    /**
+     * 先序遍历 迭代实现2
+     * @return
+     */
+    java.util.List<T> preTraverse2();
 
 
     /**
