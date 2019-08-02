@@ -3,6 +3,7 @@ package com.icecoder.algorithm.adt;
 import com.icecoder.algorithm.adt.Tree;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -140,6 +141,24 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
         elms.addLast(node.data);
         preTraverseRecursive(node.left, elms);
         preTraverseRecursive(node.right, elms);
+    }
+
+    @Override
+    public List<T> preTraverse() {
+        LinkedList<T> res = new LinkedList<>();
+        Stack<Node<T>> waitVisitNodes = new ArrayStack<>();
+        waitVisitNodes.push(root);
+        while (!waitVisitNodes.empty()) {
+            Node<T> n = waitVisitNodes.pop();
+            res.addLast(n.data());
+            if (n.right() != null) {
+                waitVisitNodes.push((Node<T>) n.right());
+            }
+            if (n.left() != null) {
+                waitVisitNodes.push((Node<T>)n.left());
+            }
+        }
+        return res;
     }
 
     @Override

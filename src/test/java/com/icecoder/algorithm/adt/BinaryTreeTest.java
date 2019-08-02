@@ -64,4 +64,27 @@ public class BinaryTreeTest {
         b2.insert(6);
         Assertions.assertEquals(Arrays.asList(5, 3, 2, 1, 4, 7, 6), b2.preTraverseRecursive());
     }
+
+    @Test
+    public void preTraverse() {
+        BinaryTree<Integer> b = new BinaryTree<Integer>();
+        b.insert(1);
+        b.insert(2);
+        b.insert(3);
+        b.insert(4);
+        b.insert(5);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5), b.preTraverse());
+
+        BinaryTree<Integer> b2 = new BinaryTree<Integer>();
+        b2.insert(5);
+        b2.insert(3);
+        b2.insert(4);
+        b2.insert(2);
+        b2.insert(1);
+        b2.insert(7);
+        b2.insert(6);
+        Assertions.assertEquals(Arrays.asList(5, 3, 2, 1, 4, 7, 6), b2.preTraverse());
+    }
+
+
 }
