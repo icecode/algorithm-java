@@ -87,6 +87,19 @@ public interface Tree<T extends Comparable<T>> {
 
 
     /**
+     * 中缀遍历
+     * @return
+     */
+    java.util.List<T> infixTraverseRecursive();
+
+    /**
+     * 中缀遍历， 迭代实现
+     * @return
+     */
+    java.util.List<T> infixTraverse();
+
+
+    /**
      * 是否为一个空树
      * @return
      */

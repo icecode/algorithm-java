@@ -108,4 +108,47 @@ public class BinaryTreeTest {
     }
 
 
+    @Test
+    public void infixTraverseRecursive() {
+        BinaryTree<Integer> b = new BinaryTree<Integer>();
+        b.insert(1);
+        b.insert(2);
+        b.insert(3);
+        b.insert(4);
+        b.insert(5);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5), b.infixTraverseRecursive());
+
+        BinaryTree<Integer> b2 = new BinaryTree<Integer>();
+        b2.insert(5);
+        b2.insert(3);
+        b2.insert(4);
+        b2.insert(2);
+        b2.insert(1);
+        b2.insert(7);
+        b2.insert(6);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7), b2.infixTraverseRecursive());
+    }
+
+    @Test
+    public void infixTraverse() {
+        BinaryTree<Integer> b = new BinaryTree<Integer>();
+        b.insert(1);
+        b.insert(2);
+        b.insert(3);
+        b.insert(4);
+        b.insert(5);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5), b.infixTraverse());
+
+        BinaryTree<Integer> b2 = new BinaryTree<Integer>();
+        b2.insert(5);
+        b2.insert(3);
+        b2.insert(4);
+        b2.insert(2);
+        b2.insert(1);
+        b2.insert(7);
+        b2.insert(6);
+        Assertions.assertEquals(Arrays.asList(1, 2, 3, 4, 5, 6, 7), b2.infixTraverse());
+    }
+
+
 }

@@ -190,6 +190,53 @@ public class BinaryTree<T extends Comparable<T>> implements Tree<T> {
         }
     }
 
+
+    @Override
+    public List<T> infixTraverseRecursive() {
+        LinkedList<T> res = new LinkedList<>();
+        infixTraverseRecursive(root, res);
+        return res;
+    }
+
+    private void infixTraverseRecursive(Node<T> node, LinkedList<T> elms) {
+        if (node == null) {
+            return;
+        }
+        infixTraverseRecursive(node.left, elms);
+        elms.addLast(node.data());
+        infixTraverseRecursive(node.right, elms);
+    }
+
+
+    @Override
+    public List<T> infixTraverse() {
+        LinkedList<T> res = new LinkedList<>();
+        Stack<Node<T>> waitVisitNodes = new ArrayStack<>();
+        waitVisitNodes.push(root);
+        infixTraverseLeft(root.left, res);
+        res.addLast(root.data());
+        if (root.right() != null) {
+            infixTraverseLeft(root.right, res);
+        }
+        return res;
+    }
+
+    public void infixTraverseLeft(Node<T> node, LinkedList<T> res) {
+        if (node == null) {
+            return;
+        }
+        Stack<Node<T>> leftNodes = new ArrayStack<>();
+        while (node != null) {
+            leftNodes.push(node);
+            node = node.left;
+        }
+        while (!leftNodes.empty()) {
+            Node<T> l = leftNodes.pop();
+            res.add(l.data);
+            infixTraverseLeft(l.right, res);
+        }
+    }
+
     @Override
     public Node<T> root() {
         return root;
